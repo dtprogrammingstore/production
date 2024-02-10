@@ -1,6 +1,7 @@
 import BlurPage from '@/components/global/blur-page'
 import InfoBar from '@/components/global/infobar'
 import Sidebar from '@/components/sidebar'
+import Unauthorized from '@/components/unauthorized'
 import {
   getNotificationAndUser,
   verifyAndAcceptInvitation,
@@ -30,7 +31,7 @@ const layout = async ({ children, params }: Props) => {
     user.privateMetadata.role !== 'AGENCY_OWNER' &&
     user.privateMetadata.role !== 'AGENCY_ADMIN'
   )
-    return "Error"
+    return <Unauthorized/>
 
   let allNoti: any = []
   const notifications = await getNotificationAndUser(agencyId)
